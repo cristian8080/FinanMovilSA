@@ -1,0 +1,17 @@
+package com.myspace.gestioncredito.rules;
+
+import com.myspace.gestioncredito.model.bo.PersonaBO;
+
+rule "Validar Aprobacion"
+no-loop
+ruleflow-group "Reglas Cambiar Nombre"
+    when 
+        $p: PersonaBO (Aprobado == "No")
+    then 
+       modify ($p) {
+			setPrimerNombre("DENEGADO "),
+			setSegundoNombre("DENEGADO "),
+			setPrimerApellido("DENEGADO "),
+			setSegundoApellido("DENEGADO ")
+		}
+    end
